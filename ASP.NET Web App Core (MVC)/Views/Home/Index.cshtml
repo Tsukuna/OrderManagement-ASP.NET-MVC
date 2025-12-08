@@ -1,0 +1,114 @@
+﻿@{
+    ViewData["Title"] = "Home";
+}
+
+<div class="container-fluid mt-4">
+    <div class="jumbotron bg-primary text-white p-5 rounded">
+        <h1 class="display-4">Welcome, @ViewBag.UserName!</h1>
+        <p class="lead">Order Management System - Exercise 4</p>
+        <hr class="my-4 bg-white" />
+        <p>Manage items, agents, and orders efficiently with our comprehensive system.</p>
+    </div>
+
+    <div class="row mt-5">
+        <div class="col-md-3">
+            <div class="card shadow-sm text-center border-primary">
+                <div class="card-body">
+                    <i class="bi bi-cart" style="font-size: 3rem; color: #0d6efd;"></i>
+                    <h3 class="mt-3">@ViewBag.TotalOrders</h3>
+                    <p class="text-muted">Total Orders</p>
+                    <a asp-controller="Orders" asp-action="Index" class="btn btn-primary btn-sm">View Orders</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card shadow-sm text-center border-success">
+                <div class="card-body">
+                    <i class="bi bi-box" style="font-size: 3rem; color: #198754;"></i>
+                    <h3 class="mt-3">@ViewBag.TotalItems</h3>
+                    <p class="text-muted">Total Products</p>
+                    <a asp-controller="Items" asp-action="Index" class="btn btn-success btn-sm">View Products</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card shadow-sm text-center border-warning">
+                <div class="card-body">
+                    <i class="bi bi-people" style="font-size: 3rem; color: #ffc107;"></i>
+                    <h3 class="mt-3">@ViewBag.TotalAgents</h3>
+                    <p class="text-muted">Total Agents</p>
+                    <a asp-controller="Agents" asp-action="Index" class="btn btn-warning btn-sm">View Agents</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card shadow-sm text-center border-info">
+                <div class="card-body">
+                    <i class="bi bi-graph-up" style="font-size: 3rem; color: #0dcaf0;"></i>
+                    <h3 class="mt-3">Reports</h3>
+                    <p class="text-muted">Analytics</p>
+                    <a asp-controller="Reports" asp-action="Dashboard" class="btn btn-info btn-sm">View Dashboard</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-5">
+        <div class="col-md-12">
+            <div class="card shadow-sm">
+                <div class="card-header bg-dark text-white">
+                    <h5 class="mb-0">Quick Actions</h5>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-4 mb-3">
+                            <a asp-controller="Orders" asp-action="Create" class="btn btn-primary w-100 p-3">
+                                <i class="bi bi-plus-circle"></i> Create New Order
+                            </a>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <a asp-controller="Items" asp-action="Create" class="btn btn-success w-100 p-3">
+                                <i class="bi bi-plus-circle"></i> Add New Product
+                            </a>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <a asp-controller="Agents" asp-action="Create" class="btn btn-warning w-100 p-3">
+                                <i class="bi bi-plus-circle"></i> Add New Agent
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-4">
+        <div class="col-md-12">
+            <div class="card shadow-sm">
+                <div class="card-header bg-info text-white">
+                    <h5 class="mb-0">Available Reports</h5>
+                </div>
+                <div class="card-body">
+                    <div class="list-group">
+                        <a asp-controller="Reports" asp-action="BestItems" class="list-group-item list-group-item-action">
+                            <i class="bi bi-trophy"></i> Best Selling Items
+                        </a>
+                        <a asp-controller="Reports" asp-action="ItemsPurchasedByCustomer" class="list-group-item list-group-item-action">
+                            <i class="bi bi-cart-check"></i> Items Purchased by Customer
+                        </a>
+                        <a asp-controller="Reports" asp-action="CustomerPurchases" class="list-group-item list-group-item-action">
+                            <i class="bi bi-people-fill"></i> Customer Purchases Summary
+                        </a>
+                        <a asp-controller="Reports" asp-action="AgentPerformance" class="list-group-item list-group-item-action">
+                            <i class="bi bi-graph-up"></i> Agent Performance Report
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Styles {
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+}
