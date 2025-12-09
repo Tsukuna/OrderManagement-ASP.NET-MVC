@@ -252,4 +252,5 @@ D:\.NET Projects\ASP.NET Web App Core (MVC)\ASP.NET Web App Core (MVC)\obj\Debug
 D:\.NET Projects\ASP.NET Web App Core (MVC)\ASP.NET Web App Core (MVC)\obj\Debug\net8.0\ASP.NET Web App Core (MVC).pdb
 D:\.NET Projects\ASP.NET Web App Core (MVC)\ASP.NET Web App Core (MVC)\obj\Debug\net8.0\ASP.NET Web App Core (MVC).genruntimeconfig.cache
 D:\.NET Projects\ASP.NET Web App Core (MVC)\ASP.NET Web App Core (MVC)\obj\Debug\net8.0\ref\ASP.NET Web App Core (MVC).dll
+D:\.NET Projects\ASP.NET Web App Core (MVC)\ASP.NET Web App Core (MVC)\obj\Debug\net8.0\ASP.NET Web App Core (MVC).sourcelink.json
 D:\.NET Projects\ASP.NET Web App Core (MVC)\ASP.NET Web App Core (MVC)\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt

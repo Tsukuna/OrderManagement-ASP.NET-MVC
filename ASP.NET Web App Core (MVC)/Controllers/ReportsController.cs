@@ -118,19 +118,22 @@ namespace ASP.NET_Web_App_Core__MVC_.Controllers
                 query = query.Where(o => o.OrderDate <= endDate.Value);
             }
 
-            var result = await query
+            // Get the orders first, then calculate in memory to avoid nested aggregates
+            var orders = await query.ToListAsync();
+
+            var result = orders
                 .GroupBy(o => new { o.UserID, o.User!.UserName, o.User.Email })
                 .Select(g => new
                 {
                     UserName = g.Key.UserName,
                     Email = g.Key.Email,
                     OrderCount = g.Count(),
-                    TotalItems = g.Sum(o => o.OrderDetails!.Sum(od => od.Quantity)),
+                    TotalItems = g.SelectMany(o => o.OrderDetails!).Sum(od => od.Quantity),
                     TotalSpent = g.Sum(o => o.TotalAmount),
                     LastOrderDate = g.Max(o => o.OrderDate)
                 })
                 .OrderByDescending(x => x.TotalSpent)
-                .ToListAsync();
+                .ToList();
 
             return View(result);
         }
@@ -161,19 +164,22 @@ namespace ASP.NET_Web_App_Core__MVC_.Controllers
                 query = query.Where(o => o.OrderDate <= endDate.Value);
             }
 
-            var result = await query
+            // Get the orders first, then calculate in memory to avoid nested aggregates
+            var orders = await query.ToListAsync();
+
+            var result = orders
                 .GroupBy(o => new { o.AgentID, o.Agent!.AgentName, o.Agent.Email })
                 .Select(g => new
                 {
                     AgentName = g.Key.AgentName,
                     Email = g.Key.Email,
                     OrderCount = g.Count(),
-                    TotalItems = g.Sum(o => o.OrderDetails!.Sum(od => od.Quantity)),
+                    TotalItems = g.SelectMany(o => o.OrderDetails!).Sum(od => od.Quantity),
                     TotalRevenue = g.Sum(o => o.TotalAmount),
                     CompletedOrders = g.Count(o => o.OrderStatus == "Completed")
                 })
                 .OrderByDescending(x => x.TotalRevenue)
-                .ToListAsync();
+                .ToList();
 
             return View(result);
         }
